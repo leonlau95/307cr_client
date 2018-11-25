@@ -30,3 +30,27 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  background-color: rgb(159, 187, 247);
+}
+#deleteall {
+  background-color: rgb(189, 189, 174);
+  padding-bottom: 25px;
+}
+
+#sensorvalue {
+  background-color: rgb(48, 219, 231);
+}
+.sensortable {
+  background-color: rgb(241, 201, 169);
+}
+
+.sensorgraph {
+  background-color: rgb(183, 248, 177);
+}
+
+.jumbotron {
+  height: 150px;
+  padding-top: 5px;
+}
