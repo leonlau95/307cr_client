@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import DeletedMessage from './DeletedMessage';
 
 import {
   LineChart,
@@ -23,7 +24,8 @@ class App extends Component {
       sensor1alldata: [],
       errors: '',
       sensor2: 0,
-      sensor2alldata: []
+      sensor2alldata: [],
+      showDeletedMessage: false
     };
   }
 
@@ -80,6 +82,22 @@ class App extends Component {
     }, 5000);
   }
 
+  deleteAllHandler = () => {
+    axios
+      .get('https://glacial-citadel-67468.herokuapp.com/deleteall')
+      .then(result => {
+        this.setState({ showDeletedMessage: true });
+      })
+      .catch(err => {
+        console.log('unable to delete: ', err);
+      });
+  };
+
+  alertDismissHandler = () => {
+    this.setState({ showDeletedMessage: false });
+  };
+
+
   render() {
     return (
       <div>
@@ -89,9 +107,25 @@ class App extends Component {
         </div>
 
         <div className="container">
+          <DeletedMessage
+            show={this.state.showDeletedMessage}
+            alertDismiss={this.alertDismissHandler}
+          />
           <div className="row">
             <div className="text-center container col-sm-4">
               <div className="row">
+              <div className="text-center container col-sm-6">
+                 <div id="deleteall">
+                   <br />
+                   <button
+                     className="btn btn-primary"
+                     onClick={this.deleteAllHandler}
+                   >
+                     <h4>Delete All</h4>
+                   </button>
+                 </div>
+               </div>
+               <div className="text-center container col-sm-6">
                 <div className="sensorvalue">
                   <label>
                     <h4>Virbration Sensor Value</h4>
