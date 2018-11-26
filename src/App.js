@@ -21,12 +21,9 @@ class App extends Component {
     this.state = {
       sensor1: 0,
       sensor1alldata: [],
-      errors: ''
-    };
-    this.state = {
+      errors: '',
       sensor2: 0,
-      sensor2alldata: [],
-      errors: ''
+      sensor2alldata: []
     };
   }
 
